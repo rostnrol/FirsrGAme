@@ -11,6 +11,12 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float _downLimit;
 
     private float _cameraZoom = -10;
+    
+    private void Update()
+    {
+       FollowPlayer();
+       CameraLimit();
+    }
 
     private void FollowPlayer()
     {
@@ -21,11 +27,5 @@ public class CameraMovement : MonoBehaviour
     private void CameraLimit()
     {
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, _leftLimit, _rightLimit), Mathf.Clamp(transform.position.y, _downLimit, _upLimit), _cameraZoom);
-    }
-
-    void Update()
-    {
-        FollowPlayer();
-        CameraLimit();
     }
 }
